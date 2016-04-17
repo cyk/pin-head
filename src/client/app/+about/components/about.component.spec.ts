@@ -26,6 +26,6 @@ export function main() {
 @Component({
   selector: 'test-cmp',
   directives: [AboutComponent],
-  template: '<sd-about></sd-about>'
+  template: '<ph-about></ph-about>'
 })
 class TestComponent {}

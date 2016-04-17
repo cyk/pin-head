@@ -5,12 +5,12 @@ import {MdButton} from '@angular2-material/button';
 import {NameListService} from '../../shared/index';
 
 @Component({
-  selector: 'sd-home',
-  templateUrl: 'app/+home/components/home.component.html',
-  styleUrls: ['app/+home/components/home.component.css'],
+  selector: 'ph-pin',
+  templateUrl: 'app/+pin/components/pin.component.html',
+  styleUrls: ['app/+pin/components/pin.component.scss'],
   directives: [FORM_DIRECTIVES, CORE_DIRECTIVES, MdButton]
 })
-export class HomeComponent {
+export class PinComponent {
   newName: string;
   constructor(public nameListService: NameListService) {}
 

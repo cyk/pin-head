@@ -42,7 +42,7 @@ export function main() {
 
 @Component({
   selector: 'test-cmp',
-  template: '<sd-app></sd-app>',
+  template: '<ph-app></ph-app>',
   directives: [AppComponent]
 })
 class TestComponent {}
