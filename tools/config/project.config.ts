@@ -22,5 +22,8 @@ export class ProjectConfig extends SeedConfig {
     const seedDependencies = this.NPM_DEPENDENCIES;
 
     this.NPM_DEPENDENCIES = seedDependencies.concat(additional_deps);
+
+    this.SYSTEM_CONFIG_DEV.packageConfigPaths
+      .push(`${this.APP_BASE}node_modules/**/*/package.json`);
   }
 }
