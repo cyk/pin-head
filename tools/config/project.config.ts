@@ -4,6 +4,12 @@ import {InjectableDependency} from './seed.config.interfaces';
 
 export class ProjectConfig extends SeedConfig {
   PROJECT_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'project');
+  SCSS_SRC = `${this.APP_SRC}/scss`;
+
+  // Declare local files that needs to be injected
+  APP_ASSETS: InjectableDependency[] = [
+    { src: `${this.SCSS_SRC}/main.scss`, inject: true, vendor: false }
+  ];
 
   constructor() {
     super();

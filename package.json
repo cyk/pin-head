@@ -60,6 +60,8 @@
     "gulp-load-plugins": "^1.2.0",
     "gulp-plumber": "~1.1.0",
     "gulp-postcss": "^6.1.0",
+    "gulp-progeny": "^0.2.1",
+    "gulp-sass": "^2.2.0",
     "gulp-shell": "~0.5.2",
     "gulp-sourcemaps": "2.0.0-alpha",
     "gulp-template": "^4.0.0",
