@@ -1,3 +1,10 @@
-<sd-toolbar></sd-toolbar>
-<sd-navbar></sd-navbar>
-<router-outlet></router-outlet>
+<md-sidenav-layout>
+  <md-sidenav #nav mode="sidenav">
+    <ph-navbar></ph-navbar>
+  </md-sidenav>
+  <md-toolbar>
+    <i class="material-icons toolbar-icon" (click)="nav.toggle()">menu</i>
+    <span>PinHead</span>
+  </md-toolbar>
+  <router-outlet></router-outlet>
+</md-sidenav-layout>
