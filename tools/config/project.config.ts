@@ -5,6 +5,17 @@ import {InjectableDependency} from './seed.config.interfaces';
 export class ProjectConfig extends SeedConfig {
   PROJECT_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'project');
   SCSS_SRC = `${this.APP_SRC}/scss`;
+  PINTEREST_APP_ID: string = '4822734882983658153';
+  BROWSER_LIST = [
+    'edge >= 13',
+    'ff >= 30',
+    'chrome >= 34',
+    'safari >= 7',
+    'opera >= 23',
+    'ios >= 7',
+    'android >= 4.4',
+    'bb >= 10'
+  ];
 
   // Declare local files that needs to be injected
   APP_ASSETS: InjectableDependency[] = [

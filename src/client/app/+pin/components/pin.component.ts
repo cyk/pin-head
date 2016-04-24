@@ -1,6 +1,5 @@
 import {Component} from 'angular2/core';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
-import {MdButton} from '@angular2-material/button';
 
 import {NameListService} from '../../shared/index';
 
@@ -8,7 +7,7 @@ import {NameListService} from '../../shared/index';
   selector: 'ph-pin',
   templateUrl: 'app/+pin/components/pin.component.html',
   styleUrls: ['app/+pin/components/pin.component.scss'],
-  directives: [FORM_DIRECTIVES, CORE_DIRECTIVES, MdButton]
+  directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]
 })
 export class PinComponent {
   newName: string;

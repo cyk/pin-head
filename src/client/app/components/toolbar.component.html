@@ -1,0 +1,5 @@
+<h1>PinHead</h1>
+<button md-button (click)="login()" *ngIf="!loggedIn">Login with Pinterest</button>
+<button md-icon-button (click)="logout()" title="Logout of Pinterest" *ngIf="loggedIn">
+  <i class="material-icons">power_settings_new</i>
+</button>
