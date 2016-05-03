@@ -45,9 +45,10 @@ export class PinComponent implements OnInit {
     });
   }
 
-  rePin(pin: any) {
-    console.log('rePin', pin);
-    console.log('pinToBoardName', this.toBoard.name);
+  rePin(pin: any, toBoard: any) {
+    this.pinterest.rePin(pin, toBoard).subscribe((r: any) => {
+      console.log('r', r);
+    });
   }
 
   thumbnail(board: any) {

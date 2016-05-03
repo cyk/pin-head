@@ -9,7 +9,7 @@
   </md-list-item>
 </md-nav-list>
 
-<md-nav-list *ngIf="toBoard && !pin$">
+<md-nav-list *ngIf="toBoard && !pin">
   <h3 md-subheader>Choose a board to pin from</h3>
   <md-list-item *ngFor="let board of followedBoards$ | async" (click)="showPinCandidates(board)">
     <img md-list-avatar [src]="thumbnail(board).url" alt="Image of {{board.name}}">
@@ -20,12 +20,12 @@
   </md-list-item>
 </md-nav-list>
 
-<md-card *ngIf="pin$ | async" (click)="rePin(pin$)">
+<md-card *ngIf="pin" (click)="rePin(pin, toBoard)">
   <md-card-header>
     <md-card-subtitle>Pinning from <strong>{{fromBoard.name}}</strong> to <strong>{{toBoard.name}}</strong></md-card-subtitle>
   </md-card-header>
-    <img md-card-image [src]="(pin$ | async)?.image?.original?.url">
+    <img md-card-image [src]="pin.image.original.url">
   <md-card-content>
-    <p>{{(pin$ | async)?.note}}</p>
+    <p>{{pin.note}}</p>
   </md-card-content>
 </md-card>

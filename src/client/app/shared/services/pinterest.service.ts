@@ -22,7 +22,7 @@ export class PinterestService {
   }
   myBoards(): Observable<any[]> {
     return Observable.bindCallback(
-      PDK.me.bind(PDK, 'boards', {fields:'id,description,name,image'}),
+      PDK.me.bind(PDK, 'boards', {fields:'id,description,name,image,url'}),
       (response: any) => response.data
     )();
   }
@@ -45,5 +45,19 @@ export class PinterestService {
       PDK.request.bind(PDK, `/boards/${board.id}/pins/`, {fields: 'id,note,link,image'}),
       (response: any) => response.data
     )().concatAll();
+  }
+  rePin(pin: any, board: any): Observable<Object> {
+    let url = board.url.split('/').slice(-3, -1).join('/');
+
+    let data = {
+      board: url,
+      note: pin.note,
+      link: pin.link,
+      image_url: pin.image.original.url
+    };
+    return Observable.bindCallback(
+      PDK.request.bind(PDK, '/pins/', 'POST', data),
+      (response: any) => response.data
+    )();
   }
 }
