@@ -6,7 +6,7 @@ import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
 import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
 import {MdButton} from '@angular2-material/button';
 
-import {PinterestService} from '../../shared/index';
+import {PinterestService, WebcamService} from '../../shared/index';
 
 @Component({
   selector: 'ph-pin',
@@ -27,26 +27,29 @@ export class PinComponent implements OnInit {
   fromBoard: any;
   toBoard: any;
 
-  constructor(private pinterest: PinterestService) {}
+  constructor(
+    private pinterest: PinterestService,
+    private webcam: WebcamService
+  ) {}
 
   ngOnInit() {
     this.followedBoards$ = this.pinterest.followedBoards();
     this.myBoards$ = this.pinterest.myBoards();
 
-    Webcam.set({
+    this.webcam.configure({
       width: 1024,
       height: 576,
       image_format: 'jpeg',
       jpeg_quality: 10
     });
-    Webcam.attach('#camera');
   }
 
- snap() {
-   Webcam.snap((dataUri: string) => console.log('snap dataUri', dataUri));
- }
+  snap() {
+    this.webcam.snap().subscribe((dataUri) => console.log('snap dataUri', dataUri));
+  }
 
   setToBoard(board: any) {
+    this.webcam.attach('#camera');
     this.toBoard = board;
   }
 
