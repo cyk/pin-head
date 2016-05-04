@@ -1,4 +1,5 @@
 import {Component, OnInit} from 'angular2/core';
+import * as Webcam from 'webcamjs';
 import {Observable} from 'rxjs/Observable';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
@@ -31,7 +32,19 @@ export class PinComponent implements OnInit {
   ngOnInit() {
     this.followedBoards$ = this.pinterest.followedBoards();
     this.myBoards$ = this.pinterest.myBoards();
+
+    Webcam.set({
+      width: 1024,
+      height: 576,
+      image_format: 'jpeg',
+      jpeg_quality: 10
+    });
+    Webcam.attach('#camera');
   }
+
+ snap() {
+   Webcam.snap((dataUri: string) => console.log('snap dataUri', dataUri));
+ }
 
   setToBoard(board: any) {
     this.toBoard = board;
