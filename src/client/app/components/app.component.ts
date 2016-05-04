@@ -4,13 +4,14 @@ import {MD_SIDENAV_DIRECTIVES} from '@angular2-material/sidenav';
 import {MdToolbar} from '@angular2-material/toolbar';
 import {SidenavComponent} from './sidenav.component';
 import {ToolbarComponent} from './toolbar.component';
-import {PinterestService} from '../shared/index';
+import {PinterestService, WebcamService} from '../shared/index';
+
 import {PinComponent} from '../+pin/index';
 import {AboutComponent} from '../+about/index';
 
 @Component({
   selector: 'ph-app',
-  viewProviders: [PinterestService],
+  viewProviders: [PinterestService, WebcamService],
   templateUrl: 'app/components/app.component.html',
   directives: [ROUTER_DIRECTIVES, MD_SIDENAV_DIRECTIVES, MdToolbar, SidenavComponent, ToolbarComponent]
 })
