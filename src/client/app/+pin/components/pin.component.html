@@ -1,3 +1,6 @@
+<div id="camera"></div>
+<button (click)="snap()">Snap</button>
+
 <md-nav-list *ngIf="!toBoard">
   <h3 md-subheader>Choose a board to pin to</h3>
   <md-list-item *ngFor="let board of myBoards$ | async" (click)="setToBoard(board)">
