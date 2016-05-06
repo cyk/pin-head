@@ -1,12 +1,18 @@
 import {Component, OnInit} from 'angular2/core';
 import * as Webcam from 'webcamjs';
 import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/observable/timer';
+import 'rxjs/add/operator/zip';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
 import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
 import {MdButton} from '@angular2-material/button';
 
-import {PinterestService, WebcamService} from '../../shared/index';
+import {
+  PinterestService,
+  WebcamService,
+  SentimentService
+} from '../../shared/index';
 
 @Component({
   selector: 'ph-pin',
@@ -29,7 +35,8 @@ export class PinComponent implements OnInit {
 
   constructor(
     private pinterest: PinterestService,
-    private webcam: WebcamService
+    private webcam: WebcamService,
+    private sentiment: SentimentService
   ) {}
 
   ngOnInit() {
@@ -48,22 +55,32 @@ export class PinComponent implements OnInit {
     this.webcam.snap().subscribe((dataUri) => console.log('snap dataUri', dataUri));
   }
 
-  setToBoard(board: any) {
+  setFromBoard(board: any) {
     this.webcam.attach('#camera');
-    this.toBoard = board;
+    this.fromBoard = board;
   }
 
-  showPinCandidates(board: any) {
-    this.fromBoard = board;
-    this.webcam.attach('#camera');
-    this.pinterest.pinCandidates(board).subscribe(pin => {
+  showPinCandidates(toBoard: any) {
+    this.toBoard = toBoard;
+
+    let pins$ = this.pinterest.pins(this.fromBoard);
+    let pinsWithDelay$ = pins$.zip(Observable.timer(0, 2000), (p) => p);
+    let snaps$ = this.webcam.snaps(pinsWithDelay$);
+    let pinSentiments$ = pins$.zip(this.sentiment.get(snaps$));
+
+    pinsWithDelay$.subscribe(pin => {
       this.pin = pin;
     });
-  }
 
-  rePin(pin: any) {
-    console.log('rePin', pin);
-    console.log('pinToBoardName', this.toBoard.name);
+    pinSentiments$.subscribe(([pin, sentiment]) => {
+      if (sentiment === 'JOY') {
+        this.pinterest
+          .rePin(pin, this.toBoard)
+          .subscribe(result => {
+            console.log('rePinned:', result);
+          });
+      }
+    });
   }
 
   thumbnail(board: any) {

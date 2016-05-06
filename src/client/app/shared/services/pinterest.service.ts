@@ -1,9 +1,8 @@
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/bindCallback';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/observable/from';
 import 'rxjs/add/operator/concatAll';
-import 'rxjs/add/observable/zip';
-import 'rxjs/add/observable/timer';
-import 'rxjs/add/operator/share';
 
 PDK.init({ appId: '<%= PINTEREST_APP_ID %>', cookie: true });
 
@@ -20,7 +19,7 @@ export class PinterestService {
   loggedIn(): boolean {
     return !!PDK.getSession();
   }
-  myBoards(): Observable<any[]> {
+  myBoards(): Observable<any> {
     return Observable.bindCallback(
       PDK.me.bind(PDK, 'boards', {fields:'id,description,name,image'}),
       (response: any) => response.data
@@ -31,14 +30,6 @@ export class PinterestService {
       PDK.me.bind(PDK, 'following/boards', {fields:'id,description,name,image'}),
       (response: any) => response.data
     )();
-  }
-  pinCandidates(board: any): Observable<Object> {
-    // Merge each pin in stream with a timer delay
-    return Observable.zip(
-      this.pins(board),
-      Observable.timer(0, 3000),
-      (pin: any) => pin
-    );
   }
   pins(board: any): Observable<Object> {
     return Observable.bindCallback(

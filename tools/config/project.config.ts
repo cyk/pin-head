@@ -6,6 +6,7 @@ export class ProjectConfig extends SeedConfig {
   PROJECT_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'project');
   SCSS_SRC = `${this.APP_SRC}/scss`;
   PINTEREST_APP_ID: string = '4822734882983658153';
+  SENTIMENT_API_URL: string = 'https://ywwsdp7ap4.execute-api.us-west-2.amazonaws.com/test';
   BROWSER_LIST = [
     'edge >= 13',
     'ff >= 30',
