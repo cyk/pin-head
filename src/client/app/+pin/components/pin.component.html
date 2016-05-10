@@ -36,3 +36,11 @@
 
 <div id="camera"></div>
 
+<!--
+  Stop-gap notification until md-toast is ready
+  (https://github.com/angular/material2/issues/115)
+  Credit: http://codepen.io/jakamusic/pen/XXQJOP
+-->
+<div *ngIf="repinned" class="notif peek">
+  Pinned "{{repinned.note}}"
+</div>

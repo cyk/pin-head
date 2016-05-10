@@ -29,3 +29,8 @@ body {
   padding: 0 12px;
   cursor: pointer;
 }
+
+// Stop-gap notification until md-toast is ready
+// (https://github.com/angular/material2/issues/115)
+// Credit: http://codepen.io/jakamusic/pen/XXQJOP
+@import './notif';

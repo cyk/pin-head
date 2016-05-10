@@ -46,7 +46,7 @@ export class PinterestService {
       (response: any) => response.data
     )().concatAll();
   }
-  rePin(pin: any, board: any): Observable<Object> {
+  repin(pin: any, board: any): Observable<Object> {
     let url = board.url.split('/').slice(-3, -1).join('/');
 
     let data = {

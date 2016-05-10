@@ -33,6 +33,7 @@ export class PinComponent implements OnInit {
   myBoards$: Observable<any>;
   followedBoards$: Observable<any>;
   pin: any;
+  repinned: any;
   fromBoard: any;
   toBoard: any;
 
@@ -82,9 +83,9 @@ export class PinComponent implements OnInit {
     pinSentiments$.subscribe(([pin, sentiment]) => {
       if (sentiment === 'JOY') {
         this.pinterest
-          .rePin(pin, this.toBoard)
-          .subscribe(result => {
-            console.log('rePinned:', result);
+          .repin(pin, this.toBoard)
+          .subscribe(pin => {
+            this.repinned = pin;
           });
       }
     });
