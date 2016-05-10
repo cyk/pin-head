@@ -10,17 +10,14 @@ import {PinterestService} from '../shared/services/pinterest.service';
   directives: [ROUTER_DIRECTIVES, MdButton],
 })
 export class ToolbarComponent {
-  loggedIn: boolean = this.pinterest.loggedIn();
+  loggedIn$ = this.pinterest.loggedIn$;
 
   constructor(private pinterest: PinterestService) {}
 
   login() {
-    this.pinterest.login().subscribe(this.resetLoggedIn.bind(this));
+    this.pinterest.login();
   }
   logout() {
-    this.pinterest.logout().subscribe(this.resetLoggedIn.bind(this));
-  }
-  resetLoggedIn() {
-    this.loggedIn = this.pinterest.loggedIn();
+    this.pinterest.logout();
   }
 }

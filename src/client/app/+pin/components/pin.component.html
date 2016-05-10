@@ -1,33 +1,38 @@
-<md-nav-list *ngIf="!fromBoard">
-  <h3 md-subheader>Choose a board to pin from</h3>
-  <md-list-item *ngFor="let board of followedBoards$ | async" (click)="setFromBoard(board)">
-    <img md-list-avatar [src]="thumbnail(board).url" alt="Image of {{board.name}}">
-    <h4 md-line>{{board.name}}</h4>
-    <p md-line>
-      <span>{{board.description}}</span>
-    </p>
-  </md-list-item>
-</md-nav-list>
+<p *ngIf="!(loggedIn$ | async)">You must <a class="pointer" (click)="login()">login with Pinterest</a> to use PinHead</p>
 
-<md-nav-list *ngIf="fromBoard && !pin">
-  <h3 md-subheader>Choose a board to pin to</h3>
-  <md-list-item *ngFor="let board of myBoards$ | async" (click)="showPinCandidates(board)">
-    <img md-list-avatar [src]="thumbnail(board).url" alt="Image of {{board.name}}">
-    <h4 md-line>{{board.name}}</h4>
-    <p md-line>
-      <span>{{board.description}}</span>
-    </p>
-  </md-list-item>
-</md-nav-list>
+<div *ngIf="(loggedIn$ | async)">
+  <md-nav-list *ngIf="!fromBoard && (followedBoards$ | async)">
+    <h3 md-subheader>Choose a board to pin from</h3>
+    <md-list-item *ngFor="let board of followedBoards$ | async" (click)="setFromBoard(board)">
+      <img md-list-avatar [src]="thumbnail(board).url" alt="Image of {{board.name}}">
+      <h4 md-line>{{board.name}}</h4>
+      <p md-line>
+        <span>{{board.description}}</span>
+      </p>
+    </md-list-item>
+  </md-nav-list>
 
-<md-card *ngIf="pin">
-  <md-card-header>
-    <md-card-subtitle>Pinning from <strong>{{fromBoard.name}}</strong> to <strong>{{toBoard.name}}</strong></md-card-subtitle>
-  </md-card-header>
-    <img md-card-image [src]="pin.image.original.url">
-  <md-card-content>
-    <p>{{pin.note}}</p>
-  </md-card-content>
-</md-card>
+  <md-nav-list *ngIf="fromBoard && !pin">
+    <h3 md-subheader>Choose a board to pin to</h3>
+    <md-list-item *ngFor="let board of myBoards$ | async" (click)="showPinCandidates(board)">
+      <img md-list-avatar [src]="thumbnail(board).url" alt="Image of {{board.name}}">
+      <h4 md-line>{{board.name}}</h4>
+      <p md-line>
+        <span>{{board.description}}</span>
+      </p>
+    </md-list-item>
+  </md-nav-list>
+
+  <md-card *ngIf="pin">
+    <md-card-header>
+      <md-card-subtitle>Pinning from <strong>{{fromBoard.name}}</strong> to <strong>{{toBoard.name}}</strong></md-card-subtitle>
+    </md-card-header>
+      <img md-card-image [src]="pin.image.original.url">
+    <md-card-content>
+      <p>{{pin.note}}</p>
+    </md-card-content>
+  </md-card>
+</div>
 
 <div id="camera"></div>
+

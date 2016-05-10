@@ -1,23 +1,32 @@
 import {Observable} from 'rxjs/Observable';
+import {Subject} from 'rxjs/Subject';
 import 'rxjs/add/observable/bindCallback';
-import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/from';
+import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/concatAll';
 
 PDK.init({ appId: '<%= PINTEREST_APP_ID %>', cookie: true });
 
 export class PinterestService {
-  login(): Observable<Object> {
-    return Observable.bindCallback(
+
+  loggedIn$ = this._loggedIn.asObservable().startWith(!!PDK.getSession());
+
+  constructor(private _loggedIn = new Subject<boolean>()) {}
+
+  login(): Observable<boolean> {
+    Observable.bindCallback(
       PDK.login.bind(PDK, {scope: 'read_public, write_public, read_relationships'}),
-      (response: any) => response.session
-    )();
+      (response: any) => response.session)()
+      .subscribe(() => this.broadcastLoggedIn());
+    return this.loggedIn$;
   }
-  logout(): Observable<Object> {
-    return Observable.bindCallback(PDK.logout.bind(PDK))();
+  logout(): Observable<boolean> {
+    Observable.bindCallback(PDK.logout.bind(PDK))()
+    .subscribe(() => this.broadcastLoggedIn());
+    return this.loggedIn$;
   }
-  loggedIn(): boolean {
-    return !!PDK.getSession();
+  broadcastLoggedIn() {
+    this._loggedIn.next(!!PDK.getSession());
   }
   myBoards(): Observable<any> {
     return Observable.bindCallback(
