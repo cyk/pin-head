@@ -14,6 +14,8 @@ import {
   SentimentService
 } from '../../shared/index';
 
+const REVIEW_DELAY = 3000;
+
 @Component({
   selector: 'ph-pin',
   templateUrl: 'app/+pin/components/pin.component.html',
@@ -64,7 +66,7 @@ export class PinComponent implements OnInit {
     this.toBoard = toBoard;
 
     let pins$ = this.pinterest.pins(this.fromBoard);
-    let pinsWithDelay$ = pins$.zip(Observable.timer(0, 2000), (p) => p);
+    let pinsWithDelay$ = pins$.zip(Observable.timer(0, REVIEW_DELAY), (p) => p);
     let snaps$ = this.webcam.snaps(pinsWithDelay$);
     let pinSentiments$ = pins$.zip(this.sentiment.get(snaps$));
 
