@@ -20,6 +20,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.pointer {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 .toolbar-icon {
   padding: 0 12px;
   cursor: pointer;

@@ -29,6 +29,7 @@ const REVIEW_DELAY = 3000;
   ]
 })
 export class PinComponent implements OnInit {
+  loggedIn$: Observable<boolean> = this.pinterest.loggedIn$;
   myBoards$: Observable<any>;
   followedBoards$: Observable<any>;
   pin: any;
@@ -51,6 +52,10 @@ export class PinComponent implements OnInit {
       image_format: 'jpeg',
       jpeg_quality: 10
     });
+  }
+
+  login() {
+    this.pinterest.login();
   }
 
   snap() {
