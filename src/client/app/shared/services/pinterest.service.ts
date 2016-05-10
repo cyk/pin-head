@@ -46,4 +46,18 @@ export class PinterestService {
       (response: any) => response.data
     )().concatAll();
   }
+  repin(pin: any, board: any): Observable<Object> {
+    let url = board.url.split('/').slice(-3, -1).join('/');
+
+    let data = {
+      board: url,
+      note: pin.note,
+      link: pin.link,
+      image_url: pin.image.original.url
+    };
+    return Observable.bindCallback(
+      PDK.request.bind(PDK, '/pins/', 'POST', data),
+      (response: any) => response.data
+    )();
+  }
 }
