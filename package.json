@@ -1,9 +1,9 @@
 {
-  "name": "angular2-seed",
+  "name": "pin-head",
   "version": "0.0.0",
-  "description": "Seed for Angular 2 apps",
+  "description": "An example Angular2 application that enables pinning by facial expression",
   "repository": {
-    "url": "https://github.com/mgechev/angular2-seed"
+    "url": "https://github.com/cyk/pin-head"
   },
   "scripts": {
     "build.dev": "gulp build.dev --color",
