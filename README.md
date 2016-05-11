@@ -18,12 +18,12 @@ An example Angular2 application that enables pinning by facial expression.
 
 Frameworks, libraries, and web APIs used:
 
-- [Angular 2](https://angular.io/) ([mgechev/angular2-seed](http://mgechev/angular2-seed))
+- [Angular 2](https://angular.io/) ([mgechev/angular2-seed](http://github.com/mgechev/angular2-seed))
 - [RxJS 5](https://github.com/ReactiveX/rxjs)
 - [Pinterest API](https://developers.pinterest.com/docs/getting-started/introduction/)
 - [Google Cloud Vision API](https://cloud.google.com/vision/) (with a bit of AWS [API Gateway](https://aws.amazon.com/api-gateway/) and [Lambda](https://aws.amazon.com/lambda/))
 
-Please refer to the [mgechev/angular2-seed](http://mgechev/angular2-seed) documentation for setup and usage instructions.
+Please refer to the [mgechev/angular2-seed](http://github.com/mgechev/angular2-seed) documentation for setup and usage instructions.
 
 ## License
 
