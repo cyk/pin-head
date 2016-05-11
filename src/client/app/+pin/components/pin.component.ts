@@ -1,5 +1,4 @@
 import {Component, OnInit} from 'angular2/core';
-import * as Webcam from 'webcamjs';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/timer';
 import 'rxjs/add/operator/zip';
