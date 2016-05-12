@@ -5,7 +5,12 @@ import {InjectableDependency} from './seed.config.interfaces';
 export class ProjectConfig extends SeedConfig {
   PROJECT_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'project');
   SCSS_SRC = `${this.APP_SRC}/scss`;
+  // Create a Pinterest app here:
+  // https://developers.pinterest.com/docs/api/overview/
   PINTEREST_APP_ID: string = '4822734882983658153';
+  // Setup a face sentiments endpoint with
+  // Google Vision API via AWS API Gateway and Lambda:
+  // https://gist.github.com/cyk/8ec6481d3dcbe10376f8
   SENTIMENT_API_URL: string = 'https://ywwsdp7ap4.execute-api.us-west-2.amazonaws.com/test';
   BROWSER_LIST = [
     'edge >= 13',
