@@ -1,10 +1,10 @@
-import {join} from 'path';
-import {SeedConfig} from './seed.config';
-import {InjectableDependency} from './seed.config.interfaces';
+import { join } from 'path';
+
+import { SeedConfig } from './seed.config';
+import { InjectableDependency } from './seed.config.interfaces';
 
 export class ProjectConfig extends SeedConfig {
   PROJECT_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'project');
-  SCSS_SRC = `${this.APP_SRC}/scss`;
   // Create a Pinterest app here:
   // https://developers.pinterest.com/docs/api/overview/
   PINTEREST_APP_ID: string = '4822734882983658153';
@@ -23,15 +23,12 @@ export class ProjectConfig extends SeedConfig {
     'bb >= 10'
   ];
 
-  // Declare local files that needs to be injected
-  APP_ASSETS: InjectableDependency[] = [
-    { src: `${this.SCSS_SRC}/main.scss`, inject: true, vendor: false }
-  ];
-
   constructor() {
     super();
     this.APP_TITLE = 'PinHead';
     let additional_deps: InjectableDependency[] = [
+      // md-toast isn't ready https://github.com/angular/material2/issues/115
+      {src: 'burnt-toast/build/css/burnttoast.css', inject: true},
       // {src: 'jquery/dist/jquery.min.js', inject: 'libs'},
       // {src: 'lodash/lodash.min.js', inject: 'libs'},
     ];
@@ -42,5 +39,11 @@ export class ProjectConfig extends SeedConfig {
 
     this.SYSTEM_CONFIG_DEV.packageConfigPaths
       .push(`${this.APP_BASE}node_modules/**/*/package.json`);
+
+    this.SYSTEM_BUILDER_CONFIG.packageConfigPaths = [
+      join(this.PROJECT_ROOT, 'node_modules', '@angular2-material', '*', 'package.json'),
+      join(this.PROJECT_ROOT, 'node_modules', '*', 'package.json'),
+      join(this.PROJECT_ROOT, 'node_modules', '@angular', '*', 'package.json')
+    ];
   }
 }

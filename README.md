@@ -8,7 +8,7 @@ PinHead
 
 An example Angular2 application that enables pinning by facial expression.
 
-![Tech](http://i.imgur.com/fgQnvt5.png)
+![Tech](https://cloud.githubusercontent.com/assets/423755/15264045/04adfb00-1924-11e6-8fd2-208c7e5d2ffc.png)
 
 ![Demo](http://i.imgur.com/QMpj44K.gif)
 

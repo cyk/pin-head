@@ -1,0 +1,40 @@
+/* Reset */
+html,
+body,
+div {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* Box-sizing border-box */
+* {
+  box-sizing: border-box;
+}
+
+/* Set up a default font and some padding to provide breathing room */
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.pointer {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.toolbar-icon {
+  padding: 0 12px;
+  cursor: pointer;
+}
+
+/* Stop-gap toolbar color until theming is ready
+https://github.com/angular/material2/issues/287  */
+md-toolbar {
+  background: #bd2125 !important;
+}
+md-toolbar .toolbar-icon {
+  color: white;
+}
