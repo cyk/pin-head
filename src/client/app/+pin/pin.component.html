@@ -1,8 +1,14 @@
-<p *ngIf="!(loggedIn$ | async)">You must <a class="pointer" (click)="login()">login with Pinterest</a> to use PinHead</p>
+<div *ngIf="!(loggedIn$ | async)">
+  <p>You must <a class="pointer" (click)="login()">login with Pinterest</a> to use PinHead, and ensure that you have:</p>
+  <ul>
+    <li>At least one <a href="https://help.pinterest.com/en/articles/following-and-unfollowing#Web">followed board</a> to pin from</li>
+    <li>At least one <a href="https://help.pinterest.com/en/articles/add-edit-or-delete-board#Web">board you've added</a> to pin to</li>
+  </ul>
+</div>
 
 <div *ngIf="(loggedIn$ | async)">
   <md-nav-list *ngIf="!fromBoard && (followedBoards$ | async)">
-    <h3 md-subheader>Choose a board to pin from</h3>
+    <h3 md-subheader>Choose a board you follow to pin from</h3>
     <md-list-item *ngFor="let board of followedBoards$ | async" (click)="setFromBoard(board)">
       <img md-list-avatar [src]="thumbnail(board).url" alt="Image of {{board.name}}">
       <h4 md-line>{{board.name}}</h4>
