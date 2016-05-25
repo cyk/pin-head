@@ -6,7 +6,7 @@
   <br>
 </h1>
 
-<h4 align="center">Pin with face sentiments!</h4>
+<h4 align="center">Repin based on your face's emotion captured by webcam</h4>
 
 <p align="center">
  <a href="https://github.com/mgechev/angular2-style-guide"><img src="https://mgechev.github.io/angular2-style-guide/images/badge.svg" alt="Angular 2 Style Guide"></a>
@@ -17,9 +17,26 @@
 <a href="#technologies"><img src="https://cloud.githubusercontent.com/assets/423755/15264045/04adfb00-1924-11e6-8fd2-208c7e5d2ffc.png"></a>
 </p>
 
-## Install
+## Introduction
 
-**PinHead** is still under active development. You can check out the latest version by visiting [pin-head.cyk.im](http://pin-head.cyk.im).
+**PinHead** is an Angular2 app based on [mgechev's seed project](https://github.com/mgechev/angular2-seed) that repins based on your face's emotion captured by webcam and analyzed by [Google's Vision API](https://cloud.google.com/vision/). This project is my active exploration of AngularJS and RxJS.
+
+A little while ago I set out on a journey learning about this [extremely sweet and clever kitten](http://whichcatisyourjavascriptframework.com/#angular2) that is Angular 2. Not too long ago Google released its Vision API sentiment analysis. I wanted to focus on Angular 2 with RxJS, so a server-less backend was a convenient way to avoid scope creep. I took a brief detour to set up a rudimentary server-less API endpoint that analyzes an image for facial sentiment. For more details on this, check out the gist on [Face Sentiments with Google Vision API via AWS API Gateway and Lambda](https://gist.github.com/cyk/8ec6481d3dcbe10376f8).
+
+:warning: **Work in progress**  Though the basic functionality is implemented, [there is still much to do](https://github.com/cyk/pin-head/issues) (and for me to learn). Pull requests are welcome and appreciated! 
+
+You can check out the latest version by visiting [pin-head.cyk.im](http://pin-head.cyk.im) &mdash; it requires camera access and a Pinterest account with boards (owned and followed).
+
+### How does it work?
+
+After choosing a board to pin from and a board to pin to, a pin will be presented every few seconds. Then, behind the scenes...
+
+1. A snapshot from your browser camera is taken
+2. The snapshot is encoded and sent off to a sentiment endpoint
+3. The Google Vision API then analyzes the image for faces and their sentiments
+4. If the likeliest sentiment is JOY then the related pin in pinned to you board.
+
+Obviously, it works best with kittens and puppies. :wink:
 
 ## Screenshot
 
@@ -28,8 +45,6 @@
 </p>
 
 ## How to Contribute
-
-:warning: **Work in progress.** Though the basic functionality is implemented, [there is still much to do](https://github.com/cyk/pin-head/issues) (and for me to learn). Pull requests are welcome and appreciated!
 
 ### Prerequisites
 
