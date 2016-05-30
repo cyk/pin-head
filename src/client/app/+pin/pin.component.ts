@@ -74,6 +74,7 @@ export class PinComponent implements OnInit {
   showPinCandidates(toBoard: any) {
     this.toBoard = toBoard;
 
+    // See marbles https://github.com/cyk/pin-head/wiki/Rx-Marbles
     let pins$ = this.pinterest.pins(this.fromBoard);
     let pinsWithDelay$ = pins$.zip(Observable.timer(0, REVIEW_DELAY), (p) => p);
     let snaps$ = this.webcam.snaps(pinsWithDelay$);
