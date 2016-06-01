@@ -1,5 +1,5 @@
 <h1 align="center">
-  <a href="https://pin-head.surge.sh/"><img src="https://cloud.githubusercontent.com/assets/423755/15446269/6aee257e-1ecf-11e6-85a2-28c700964fcc.png" alt="PinHead"></a>
+  <a href="https://pin-head.surge.sh/"><img src="https://cloud.githubusercontent.com/assets/423755/15715762/8b4d3824-27d4-11e6-9ca7-9a4e19aa9b74.png" alt="PinHead"></a>
   <br>
   PinHead
   <br>
@@ -73,6 +73,7 @@ Frameworks, libraries, and web APIs used:
 - [Pinterest API](https://developers.pinterest.com/docs/getting-started/introduction/)
 - [Google Cloud Vision API](https://cloud.google.com/vision/) (with a bit of AWS [API Gateway](https://aws.amazon.com/api-gateway/) and [Lambda](https://aws.amazon.com/lambda/))
 
+Pinhead icon by [Icons8](https://icons8.com)
 
 ## License
 
