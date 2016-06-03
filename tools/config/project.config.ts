@@ -7,11 +7,11 @@ export class ProjectConfig extends SeedConfig {
   PROJECT_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'project');
   // Create a Pinterest app here:
   // https://developers.pinterest.com/docs/api/overview/
-  PINTEREST_APP_ID: string = '4836125739864565965';
+  PINTEREST_APP_ID: string = 'pinterest-app-id';
   // Setup a face sentiments endpoint with
   // Google Vision API via AWS API Gateway and Lambda:
   // https://gist.github.com/cyk/8ec6481d3dcbe10376f8
-  SENTIMENT_API_URL: string = 'https://ywwsdp7ap4.execute-api.us-west-2.amazonaws.com/test';
+  SENTIMENT_API_URL: string = 'sentiment-api-url';
   BROWSER_LIST = [
     'edge >= 13',
     'ff >= 30',

@@ -1,5 +1,5 @@
 <h1 align="center">
-  <a href="https://pin-head.surge.sh/"><img src="https://cloud.githubusercontent.com/assets/423755/15715762/8b4d3824-27d4-11e6-9ca7-9a4e19aa9b74.png" alt="PinHead"></a>
+  <a href="http://pin-head.cyk.im/"><img src="https://cloud.githubusercontent.com/assets/423755/15715762/8b4d3824-27d4-11e6-9ca7-9a4e19aa9b74.png" alt="PinHead"></a>
   <br>
   PinHead
   <br>
