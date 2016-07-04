@@ -1,0 +1,10 @@
+<md-sidenav-layout>
+  <md-sidenav #nav mode="sidenav">
+    <ph-sidenav></ph-sidenav>
+  </md-sidenav>
+  <md-toolbar>
+    <i class="material-icons toolbar-icon" (click)="nav.toggle()">menu</i>
+    <ph-toolbar></ph-toolbar>
+  </md-toolbar>
+  <router-outlet></router-outlet>
+</md-sidenav-layout>
